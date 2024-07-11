@@ -1,0 +1,20 @@
+server:
+  port: 8888
+spring:
+  datasource:
+    url: jdbc:postgresql://${DATABASE_HOST_PORT:localhost:5432}/${DATABASE_NAME:curso-testes-postgres-local}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:postgres}
+    hikari:
+      idleTimeout: 30000
+      minimumIdle: ${IDLE_CONNECTION:10}
+      maximumPoolSize: ${CP_MAX_POOL_SIZE:10}
+  jpa:
+    show-sql: ${SHOW_SQL:false}
+    properties:
+      hibernate:
+        show_sql: ${SHOW_SQL:false}
+        format_sql: ${SHOW_SQL:false}
+        ddl-auto: update
+
+      generate-ddl: false

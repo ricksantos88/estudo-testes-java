@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: aso-manager
+  cloud:
+    config:
+      enabled: false
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    date-format: yyyy-MM-dd'T'HH:mm:ss
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+  datasource:
+    url: jdbc:postgresql://${DATABASE_HOST_PORT:localhost:5432}/${DATABASE_NAME:curso-testes-postgres-local}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:postgres}
+    hikari:
+      idleTimeout: 30000
+      minimumIdle: ${IDLE_CONNECTION:10}
+      maximumPoolSize: ${CP_MAX_POOL_SIZE:10}
+  jpa:
+    open-in-view: ${JPA_OPEN_IN_VIEW:true}
+    show-sql: ${SHOW_SQL:false}
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: ${HIBERNATE_NO_TRANSACTION:false}
+        show_sql: ${SHOW_SQL:false}
+        format_sql: ${SHOW_SQL:false}
+        ddl-auto: validate
+        jdbc:
+          batch_size: 5000
+      generate-ddl: false
